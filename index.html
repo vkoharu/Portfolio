@@ -1,1 +1,819 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Koharu's portfolio — Roblox development, game testing, map design, and content creation.">
+  <title>Koharu — Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: #ffffff;
+      color: #171717;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eeeeee;
+      background: rgba(255,255,255,0.94);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 750;
+      letter-spacing: -0.8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-size: 13px;
+      color: #666666;
+    }
+
+    .nav-links a:hover {
+      color: #111111;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 115px 0 100px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .eyebrow {
+      color: #888888;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 82px);
+      line-height: 1.05;
+      letter-spacing: -5px;
+      max-width: 800px;
+    }
+
+    .hero h1 span {
+      color: #999999;
+    }
+
+    .hero-description {
+      max-width: 560px;
+      margin-top: 25px;
+      font-size: 16px;
+      color: #777777;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .button-dark {
+      background: #171717;
+      color: white;
+    }
+
+    .button-dark:hover {
+      background: #444444;
+      transform: translateY(-2px);
+    }
+
+    .button-light {
+      border: 1px solid #dddddd;
+    }
+
+    .button-light:hover {
+      background: #f5f5f5;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 35px 0;
+      border-bottom: 1px solid #eeeeee;
+      gap: 20px;
+    }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: 750;
+      letter-spacing: -1px;
+    }
+
+    .stat-label {
+      color: #888888;
+      font-size: 12px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section.content-section {
+      padding: 85px 0;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 35px;
+      gap: 20px;
+    }
+
+    .section-label {
+      color: #999999;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      font-size: 34px;
+      letter-spacing: -1.5px;
+    }
+
+    .section-subtitle {
+      color: #888888;
+      font-size: 13px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 60px;
+    }
+
+    .about-text {
+      color: #666666;
+      font-size: 15px;
+      max-width: 600px;
+    }
+
+    .about-text p + p {
+      margin-top: 15px;
+    }
+
+    .about-details {
+      display: grid;
+      gap: 18px;
+    }
+
+    .detail {
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      color: #999999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .detail-value {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* EXPERIENCE */
+
+    .experience-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .experience-card {
+      display: grid;
+      grid-template-columns: 1fr 2fr auto;
+      gap: 25px;
+      align-items: center;
+      padding: 25px;
+      border: 1px solid #eeeeee;
+      border-radius: 12px;
+      transition: 0.2s ease;
+    }
+
+    .experience-card:hover {
+      border-color: #bbbbbb;
+      transform: translateY(-2px);
+    }
+
+    .experience-role {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .experience-company {
+      font-size: 13px;
+      color: #888888;
+      margin-top: 3px;
+    }
+
+    .experience-description {
+      color: #777777;
+      font-size: 13px;
+    }
+
+    .status {
+      font-size: 10px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #f2f2f2;
+      color: #666666;
+      white-space: nowrap;
+    }
+
+    /* PROJECTS */
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      border: 1px solid #eeeeee;
+      border-radius: 12px;
+      padding: 28px;
+      min-height: 190px;
+      transition: 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: #bbbbbb;
+      transform: translateY(-3px);
+    }
+
+    .project-type {
+      color: #999999;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .project-card h3 {
+      font-size: 21px;
+      margin: 12px 0 8px;
+    }
+
+    .project-card p {
+      color: #888888;
+      font-size: 13px;
+    }
+
+    /* SKILLS */
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      border: 1px solid #e8e8e8;
+      border-radius: 7px;
+      padding: 10px 15px;
+      font-size: 13px;
+      color: #555555;
+      background: #ffffff;
+    }
+
+    /* CONTENT */
+
+    .creator-card {
+      padding: 35px;
+      border: 1px solid #eeeeee;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .creator-card h3 {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .creator-card p {
+      color: #888888;
+      font-size: 13px;
+      max-width: 450px;
+    }
+
+    .creator-stats {
+      display: flex;
+      gap: 35px;
+    }
+
+    .creator-stats strong {
+      display: block;
+      font-size: 27px;
+    }
+
+    .creator-stats span {
+      color: #999999;
+      font-size: 11px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      padding: 90px 0;
+    }
+
+    .contact h2 {
+      font-size: 40px;
+      letter-spacing: -2px;
+    }
+
+    .contact p {
+      color: #888888;
+      margin: 15px auto 25px;
+      max-width: 450px;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid #eeeeee;
+      color: #999999;
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      .nav-links {
+        gap: 13px;
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 80px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .experience-card {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .creator-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .creator-stats {
+        gap: 25px;
+      }
+
+      .section-heading h2 {
+        font-size: 28px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">KOHARU.</a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="container">
+        <p class="eyebrow">Roblox • Development • Media</p>
+
+        <h1>
+          Hi, I'm Koharu.<br>
+          <span>I create and build.</span>
+        </h1>
+
+        <p class="hero-description">
+          A Roblox developer, game tester, builder, and content creator
+          interested in creating experiences, connecting communities,
+          and bringing ideas to life.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#experience" class="button button-dark">
+            Explore My Experience →
+          </a>
+
+          <a href="#contact" class="button button-light">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <div class="container">
+      <div class="stats">
+        <div>
+          <div class="stat-number">3M+</div>
+          <div class="stat-label">TikTok Views</div>
+        </div>
+
+        <div>
+          <div class="stat-number">2.7K+</div>
+          <div class="stat-label">TikTok Followers</div>
+        </div>
+
+        <div>
+          <div class="stat-number">2</div>
+          <div class="stat-label">Founded Studios</div>
+        </div>
+
+        <div>
+          <div class="stat-number">3+</div>
+          <div class="stat-label">Studio Experiences</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="content-section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">01 — Introduction</p>
+            <h2>About Me</h2>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I'm Koharu, a Roblox enthusiast with experience across
+              different areas of the gaming industry. My interests
+              include game development, map design, testing, content
+              creation, and community engagement.
+            </p>
+
+            <p>
+              Through working with different groups and building
+              projects of my own, I've had the opportunity to explore
+              both the creative and collaborative sides of game
+              development.
+            </p>
+
+            <p>
+              I'm always interested in learning new things, meeting
+              creative people, and finding opportunities to contribute
+              to projects.
+            </p>
+          </div>
+
+          <div class="about-details">
+            <div class="detail">
+              <div class="detail-label">Name</div>
+              <div class="detail-value">Koharu</div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-label">Main Platform</div>
+              <div class="detail-value">Roblox</div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-label">Interests</div>
+              <div class="detail-value">Development, Media & Community</div>
+            </div>
+
+            <div class="detail">
+              <div class="detail-label">Currently</div>
+              <div class="detail-value">Creating & Collaborating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="content-section" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">02 — Background</p>
+            <h2>Experience</h2>
+          </div>
+          <p class="section-subtitle">Organizations & roles</p>
+        </div>
+
+        <div class="experience-list">
+
+          <div class="experience-card">
+            <div>
+              <div class="experience-role">Map Builder & Designer</div>
+              <div class="experience-company">Homeless Man Studios</div>
+            </div>
+            <p class="experience-description">
+              Responsible for building and designing an entire
+              game map, contributing to the visual environment
+              and overall player experience.
+            </p>
+            <span class="status">Experience</span>
+          </div>
+
+          <div class="experience-card">
+            <div>
+              <div class="experience-role">Game Tester</div>
+              <div class="experience-company">Easy.gg</div>
+            </div>
+            <p class="experience-description">
+              Participate in game testing and provide gameplay
+              feedback to help identify issues and improve
+              the player experience.
+            </p>
+            <span class="status">Active</span>
+          </div>
+
+          <div class="experience-card">
+            <div>
+              <div class="experience-role">Game Tester</div>
+              <div class="experience-company">X.S Studios</div>
+            </div>
+            <p class="experience-description">
+              Previous experience testing games and exploring
+              gameplay features.
+            </p>
+            <span class="status">Former</span>
+          </div>
+
+          <div class="experience-card">
+            <div>
+              <div class="experience-role">Founder & Developer</div>
+              <div class="experience-company">KokoLabs</div>
+            </div>
+            <p class="experience-description">
+              Founded an independent Roblox group and worked
+              on projects including BONK! and ASMR Tower.
+            </p>
+            <span class="status">Founder</span>
+          </div>
+
+          <div class="experience-card">
+            <div>
+              <div class="experience-role">Founder</div>
+              <div class="experience-company">Meowstery</div>
+            </div>
+            <p class="experience-description">
+              Founded an independent Roblox group focused
+              on future creative and development projects.
+            </p>
+            <span class="status">Founder</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="content-section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">03 — Work</p>
+            <h2>Projects & Studios</h2>
+          </div>
+        </div>
+
+        <div class="project-grid">
+
+          <div class="project-card">
+            <p class="project-type">Roblox Studio • Group</p>
+            <h3>KokoLabs</h3>
+            <p>
+              An independent Roblox group founded by Koharu,
+              with projects including BONK! and ASMR Tower.
+            </p>
+          </div>
+
+          <div class="project-card">
+            <p class="project-type">Roblox Studio • Group</p>
+            <h3>Meowstery</h3>
+            <p>
+              An independent Roblox group founded to explore
+              future creative and development opportunities.
+            </p>
+          </div>
+
+          <div class="project-card">
+            <p class="project-type">Game Project</p>
+            <h3>BONK!</h3>
+            <p>
+              A Roblox game project developed under KokoLabs.
+            </p>
+          </div>
+
+          <div class="project-card">
+            <p class="project-type">Game Project</p>
+            <h3>ASMR Tower</h3>
+            <p>
+              A Roblox game project developed under KokoLabs.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="content-section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">04 — Capabilities</p>
+            <h2>Skills & Interests</h2>
+          </div>
+        </div>
+
+        <div class="skills-list">
+          <span class="skill">Roblox Studio</span>
+          <span class="skill">Map Building</span>
+          <span class="skill">Level Design</span>
+          <span class="skill">Game Testing</span>
+          <span class="skill">Gameplay Feedback</span>
+          <span class="skill">Video Editing</span>
+          <span class="skill">Content Creation</span>
+          <span class="skill">Social Media</span>
+          <span class="skill">Marketing</span>
+          <span class="skill">Community Engagement</span>
+          <span class="skill">Creative Development</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT CREATION -->
+    <section class="content-section" id="media">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-label">05 — Media</p>
+            <h2>Content Creation</h2>
+          </div>
+        </div>
+
+        <div class="creator-card">
+          <div>
+            <h3>Gaming Content & Community</h3>
+            <p>
+              Creating and editing gaming content, growing an online
+              audience, and connecting with the Roblox community
+              through social media.
+            </p>
+          </div>
+
+          <div class="creator-stats">
+            <div>
+              <strong>2.7K+</strong>
+              <span>Followers</span>
+            </div>
+
+            <div>
+              <strong>3M+</strong>
+              <span>Total Views</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <p class="section-label">06 — Contact</p>
+        <h2>Let's connect.</h2>
+
+        <p>
+          Interested in collaborating, discussing a project,
+          or connecting? Find me through my public profiles.
+        </p>
+
+        <div class="hero-buttons" style="justify-content:center;">
+          <!-- Replace # with your actual profile links -->
+          <a href="#" class="button button-dark">Roblox Profile ↗</a>
+          <a href="#" class="button button-light">TikTok ↗</a>
+          <a href="#" class="button button-light">Discord ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Koharu. All rights reserved.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
